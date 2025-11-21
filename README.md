@@ -77,7 +77,7 @@ alt="ClimateHub App Video Walkthrough" />
 
 ## Notes
 
-Building Climate Hub involved configuring Supabase storage, handling state logic for like toggling, and ensuring Tailwind CSS rendered correctly with Vite. A key challenge was managing real-time UI updates while maintaining a clean and calm design aesthetic.
+Building Climate Hub involved configuring Supabase storage and handling state logic for like toggling. A key challenge was managing real-time UI updates while maintaining a clean and calm design aesthetic.
 
 ## License
 
