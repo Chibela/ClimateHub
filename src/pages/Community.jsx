@@ -103,7 +103,7 @@ export default function Community() {
         {loading ? (
           <LoadingSpinner size={48} />
         ) : filtered.length === 0 ? (
-          <div className="community-empty">No posts yet — be the first to create one!</div>
+          <div className="community-empty">No posts yet, be the first to create one!</div>
         ) : (
           <div className="posts-grid">
             {filtered.map(p => (

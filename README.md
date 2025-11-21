@@ -7,8 +7,6 @@ This web app:
 
 Time spent: **15+ hours** spent in total
 
----
-
 ## Required Features
 
 The following **required** functionality is completed:
@@ -51,8 +49,6 @@ The following **required** functionality is completed:
   - Users can edit posts after creation
   - Users can delete posts from the post page
 
----
-
 ## Optional Features
 
 - [x] Web app implements pseudo-authentication
@@ -64,8 +60,6 @@ The following **required** functionality is completed:
 - [x] Users can upload images from their local machine
 - [x] Web app displays loading animation during data fetch
 
----
-
 ## Additional Features Implemented
 
 - Climate learning flashcards with navigation
@@ -74,8 +68,6 @@ The following **required** functionality is completed:
 - Supabase-integrated image storage
 - Like toggle system to prevent spam liking
 
----
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
@@ -83,13 +75,9 @@ Here's a walkthrough of implemented user stories:
 <img src="https://raw.githubusercontent.com/Chibela/ClimateHub/main/public/walkthrough9.gif" title="ClimateHub App Video Walkthrough"
 alt="ClimateHub App Video Walkthrough" />
 
----
-
 ## Notes
 
 Building Climate Hub involved configuring Supabase storage, handling state logic for like toggling, and ensuring Tailwind CSS rendered correctly with Vite. A key challenge was managing real-time UI updates while maintaining a clean and calm design aesthetic.
-
----
 
 ## License
 
