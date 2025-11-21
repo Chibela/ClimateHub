@@ -4,6 +4,9 @@ import { supabase } from "../lib/supabaseClient";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { getUserId } from "../utils/auth";
 import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 export default function PostPage() {
   const { id } = useParams();

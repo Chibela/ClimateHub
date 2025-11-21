@@ -62,7 +62,7 @@ export default function CreatePost() {
       const { data, error } = await supabase.from("posts").insert([row]).select().single();
       if (error) throw error;
 
-      navigate(`/post/${data.id}`);
+      navigate("/community");
     } catch (err) {
       console.error(err);
       alert("Error creating post: " + (err.message || err));

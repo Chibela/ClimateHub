@@ -3,6 +3,9 @@ import { supabase } from "../lib/supabaseClient";
 import { Link } from "react-router-dom";
 import { getUserId } from "../utils/auth";
 import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 export default function PostCard({ post, showContent = false, onToggled }) {
   const [liked, setLiked] = useState(false);

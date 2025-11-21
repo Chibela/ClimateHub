@@ -21,7 +21,7 @@ export default function Flashcards() {
 
   return (
     <div className="flashcards-container">
-      <h1 className="flashcards-title">Climate Flashcards</h1>
+      <h1 className="flashcards-title">Climate Change Info</h1>
       <div className="flashcards-viewer">
         <AnimatePresence mode="wait">
           <motion.div

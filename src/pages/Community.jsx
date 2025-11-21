@@ -6,7 +6,7 @@ import PostCard from "../components/PostCard";
 export default function Community() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("created_at"); // or 'like_count'
+  const [sortBy, setSortBy] = useState("created_at");
   const [query, setQuery] = useState("");
   const [flagFilter, setFlagFilter] = useState("All");
   const [showContent, setShowContent] = useState(false);
@@ -18,12 +18,10 @@ export default function Community() {
       setLoading(false);
       return;
     }
-    // use view if available
-    let { data, error } = await supabase
-      .from("posts") // we'll get like counts separately
-      .select(`*, (
-        select count(*) from post_likes pl where pl.post_id = posts.id
-      ) as like_count`)
+
+    const { data, error } = await supabase
+      .from("posts_with_like_counts") // Use the view
+      .select("*")
       .order("created_at", { ascending: false });
 
     if (error) {
@@ -32,31 +30,30 @@ export default function Community() {
       setLoading(false);
       return;
     }
+
     setPosts(data || []);
     setLoading(false);
   }
 
   useEffect(() => {
     fetchPosts();
-    // Realtime subscription to posts and likes/comments -> re-fetch on changes
+
     const channel = supabase
       .channel("public:community")
       .on("postgres_changes", { event: "*", schema: "public", table: "posts" }, fetchPosts)
       .on("postgres_changes", { event: "*", schema: "public", table: "post_likes" }, fetchPosts)
       .subscribe();
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    return () => supabase.removeChannel(channel);
   }, []);
 
   const filtered = useMemo(() => {
     let arr = posts.slice();
     if (query.trim()) {
-      arr = arr.filter((p) => p.title.toLowerCase().includes(query.trim().toLowerCase()));
+      arr = arr.filter(p => p.title.toLowerCase().includes(query.trim().toLowerCase()));
     }
     if (flagFilter !== "All") {
-      arr = arr.filter((p) => Array.isArray(p.flags) && p.flags.includes(flagFilter));
+      arr = arr.filter(p => Array.isArray(p.flags) && p.flags.includes(flagFilter));
     }
     if (sortBy === "like_count") {
       arr.sort((a, b) => (b.like_count || 0) - (a.like_count || 0));
@@ -77,7 +74,7 @@ export default function Community() {
         <div className="community-filters">
           <input
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={e => setQuery(e.target.value)}
             placeholder="Search posts by title..."
             className="input"
           />
@@ -96,7 +93,7 @@ export default function Community() {
           </select>
 
           <label className="community-filter-checkbox-label">
-            <input type="checkbox" checked={showContent} onChange={(e) => setShowContent(e.target.checked)} />
+            <input type="checkbox" checked={showContent} onChange={e => setShowContent(e.target.checked)} />
             Show content & image
           </label>
         </div>
@@ -109,7 +106,7 @@ export default function Community() {
           <div className="community-empty">No posts yet — be the first to create one!</div>
         ) : (
           <div className="posts-grid">
-            {filtered.map((p) => (
+            {filtered.map(p => (
               <PostCard key={p.id} post={p} showContent={showContent} onToggled={fetchPosts} />
             ))}
           </div>
