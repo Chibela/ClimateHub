@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Link } from "react-router-dom";
-import heroImg from "../assets/hero-placeholder.png";
+import heroImg from "../assets/Climate-nature.jpg";
 
 export default function Landing() {
   return (
