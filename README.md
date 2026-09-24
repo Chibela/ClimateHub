@@ -72,7 +72,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="https://raw.githubusercontent.com/Chibela/ClimateHub/main/public/walkthrough9.gif" title="ClimateHub App Video Walkthrough"
+<!-- <img src="https://raw.githubusercontent.com/Chibela/ClimateHub/main/public/walkthrough9.gif" title="ClimateHub App Video Walkthrough" -->
 alt="ClimateHub App Video Walkthrough" />
 
 ## Notes
